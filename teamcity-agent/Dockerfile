@@ -25,14 +25,11 @@ RUN apt-get install -y docker-ce docker-ce-cli containerd.io
 RUN curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 RUN chmod +x /usr/local/bin/docker-compose
 
-ENV SERVER_URL="172.17.0.1"
-
-
 COPY dist /opt/buildagent/
 
-VOLUME /opt/buildagent/conf
+RUN cp /opt/buildagent/conf/buildAgent.dist.properties /opt/buildagent/conf/buildAgent.properties
 
-VOLUME /opt/buildagent/logs
+VOLUME /var/lib/docker
 
 CMD /bin/bash /opt/buildagent/bin/install.sh
 
