@@ -9,6 +9,8 @@ services:
             PGDATA: /var/lib/postgresql/data/pgdata
         volumes: 
             - /opt/teamcity/postgresql/data:/var/lib/postgresql/data
+        networks:
+          - teamcity-network
     TeamCity:
         image: teamcity-server
         container_name: teamcity-server
@@ -18,13 +20,20 @@ services:
         volumes: 
             - /opt/teamcity/data:/data/teamcity_server/datadir
             - /opt/teamcity/logs:/opt/teamcity/logs
+        networks:
+          - teamcity-network
         cpus: '2'
     TeamCityAgent:
         image: teamcity-agent
         container_name: teamcity-agent
         restart: always
         environment:
-          SERVER_URL: "172.17.0.1" #set your docker ip
+          SERVER_URL: "172.20.0.1" #set your docker ip
         volumes: 
             - /var/run/docker.sock:/var/run/docker.sock
             - /var/teamcity/agent/conf:/data/teamcity_agent/conf
+        networks:
+          - teamcity-network
+networks:
+  teamcity-network:
+    driver: bridge
