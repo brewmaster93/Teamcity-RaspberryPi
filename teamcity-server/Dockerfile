@@ -1,5 +1,9 @@
 FROM ubuntu:20.04
 
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get dist-upgrade -y
 RUN apt-get update
 RUN apt-get install -y openjdk-8-jdk git
 

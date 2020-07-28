@@ -1,6 +1,8 @@
 FROM ubuntu:20.04
 
 RUN apt-get update
+RUN apt-get dist-upgrade -y
+RUN apt-get update
 RUN apt-get install -y openjdk-8-jdk
 RUN apt-get install -y \
     apt-transport-https \
@@ -10,7 +12,7 @@ RUN apt-get install -y \
     software-properties-common \
     maven \
     gradle \
-	nodejs
+    nodejs
 RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
 RUN add-apt-repository \
