@@ -1,0 +1,27 @@
+version: '2.2'
+services: 
+    PSQL:
+        image: postgres
+        restart: always
+        environment: 
+            POSTGRES_PASSWORD: password
+            PGDATA: /var/lib/postgresql/data/pgdata
+        volumes: 
+            - /opt/teamcity/postgresql/data:/var/lib/postgresql/data
+    TeamCity:
+        image: teamcity-server
+        ports: 
+            - "8111:8111"
+        volumes: 
+            - /opt/teamcity/data:/data/teamcity_server/datadir
+            - /opt/teamcity/logs:/opt/teamcity/logs
+        cpus: '2'
+    TeamCityAgent:
+        image: teamcity-agent
+        ports: 
+            - "8111:8111"
+        environment:
+          SERVER_URL: "172.17.0.1"
+        volumes: 
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /var/teamcity/agent/conf:/data/teamcity_agent/conf
