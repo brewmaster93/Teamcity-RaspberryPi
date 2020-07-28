@@ -28,8 +28,8 @@ services:
         container_name: teamcity-agent
         restart: always
         environment:
-          - SERVER_URL=http://teamcity-server:8111
-          - AGENT_NAME=regular_agent
+          - SERVER_URL: http://teamcity-server:8111
+          - AGENT_NAME: regular_agent
         volumes: 
             - /var/run/docker.sock:/var/run/docker.sock
         networks:
