@@ -11,7 +11,7 @@ services:
             - /opt/teamcity/postgresql/data:/var/lib/postgresql/data
         networks:
           - teamcity-network
-    TeamCity:
+    teamcity-server:
         image: teamcity-server
         container_name: teamcity-server
         restart: always
@@ -23,16 +23,15 @@ services:
         networks:
           - teamcity-network
         cpus: '2'
-    TeamCityAgent:
+    teamcity-agent:
         image: teamcity-agent
         container_name: teamcity-agent
         restart: always
         environment:
-          - SERVER_URL=http://TeamCity:8111
+          - SERVER_URL=http://teamcity-server:8111
           - AGENT_NAME=regular_agent
         volumes: 
             - /var/run/docker.sock:/var/run/docker.sock
-            - /var/teamcity/agent/conf:/data/teamcity_agent/conf
         networks:
           - teamcity-network
 networks:
