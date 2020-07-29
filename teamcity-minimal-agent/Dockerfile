@@ -49,7 +49,7 @@ LABEL dockerImage.teamcity.version="latest" \
 
 COPY run-agent.sh /run-agent.sh
 COPY run-agent-services.sh /run-services.sh
-COPY ../TeamCity/buildAgent /opt/buildagent
+COPY TeamCity/buildAgent /opt/buildagent
 
 RUN apt-get update && \
     useradd -m buildagent && \

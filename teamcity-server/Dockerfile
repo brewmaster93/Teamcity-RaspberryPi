@@ -68,7 +68,7 @@ RUN chmod +x /welcome.sh /run-server.sh /run-services.sh && sync && \
     sed -i -e 's/\r$//' /run-server.sh && \
     sed -i -e 's/\r$//' /run-services.sh
 
-COPY --chown=tcuser:tcuser ../TeamCity $TEAMCITY_DIST
+COPY --chown=tcuser:tcuser TeamCity $TEAMCITY_DIST
 RUN rm -rf $TEAMCITY_DIST/buildAgent && \
     rm -rf $TEAMCITY_DIST/temp && \
     echo "docker-ubuntu" > $TEAMCITY_DIST/webapps/ROOT/WEB-INF/DistributionType.txt
