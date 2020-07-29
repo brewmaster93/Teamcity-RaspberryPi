@@ -1,0 +1,1 @@
+cd teamcity-minimal-agent && sudo docker build . -t teamcity-minimal-agent:latest && cd ../teamcity-agent && sudo docker build . -t teamcity-agent:latest && cd ../teamcity-server && sudo docker build . -t teamcity-server:latest
