@@ -22,18 +22,21 @@ services:
             - /opt/teamcity/logs:/opt/teamcity/logs
         networks:
           - teamcity-network
-        cpus: '2'
-    teamcity-agent:
-        image: teamcity-agent
-        container_name: teamcity-agent
+        cpus: '2' #number of max cpus, if not the server use 100% of cpus at start for several minutes
+    teamcity-agent-docker:
+        image: teamcity-agent-docker
+        container_name: teamcity-agent-docker
         restart: always
+        user: '0' #user uid, 0 for root user
         environment:
-          - SERVER_URL: http://teamcity-server:8111
-          - AGENT_NAME: regular_agent
+          - SERVER_URL=http://teamcity-server:8111/
+          - AGENT_NAME=regular_docker_agent
         volumes: 
             - /var/run/docker.sock:/var/run/docker.sock
         networks:
           - teamcity-network
+        depends_on:
+          - teamcity-server
 networks:
   teamcity-network:
     driver: bridge
