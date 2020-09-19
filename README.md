@@ -49,7 +49,7 @@ docker-compose down
 - setup db as screenshot
 - use default password 'example' in docker-compose.yml
 
-<img src="pics/psql-setup.png"  width="60%" height="60%">
+![](/pics/psql-setup.png)
 
 
 for setting db table/user/password.
@@ -58,6 +58,8 @@ please refer to PostgreSQL official doc:
 https://hub.docker.com/_/postgres
 
 ## Credits
+
 Official dockerfiles repo: https://github.com/JetBrains/teamcity-docker-images
+
 Sunpaq for ispiration: https://github.com/sunpaq/rpi-ci
 
