@@ -2,6 +2,7 @@
 I modified the original dockerfiles implementation for arm64 arch.
 
 Supported arch:
+
 - Raspberry-Pi 3/4 (arm64/v8)
 
  
@@ -10,6 +11,7 @@ Supported arch:
 ## 1.install docker & docker-compose
 
 Please refer to the official doc:
+
 https://docs.docker.com/engine/install/
 
 https://docs.docker.com/compose/install/
@@ -47,7 +49,7 @@ docker-compose down
 - setup db as screenshot
 - use default password 'example' in docker-compose.yml
 
-![](/pics/psql-setup.png){:height="50%" width="50%"}
+![](/pics/psql-setup.png) <!-- .element height="50%" width="50%" -->
 
 for setting db table/user/password.
 please refer to PostgreSQL official doc:
