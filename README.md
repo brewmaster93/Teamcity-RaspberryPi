@@ -1,4 +1,4 @@
-# rpi-ci
+# Teamcity-RaspberryPi
 I modified the original dockerfiles implementation for arm64 arch.
 
 Supported arch:
@@ -47,7 +47,7 @@ docker-compose down
 - setup db as screenshot
 - use default password 'example' in docker-compose.yml
 
-![](/pics/psql-setup.png)
+![](/pics/psql-setup.png){:height="50%" width="50%"}
 
 for setting db table/user/password.
 please refer to PostgreSQL official doc:
